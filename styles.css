@@ -22,6 +22,21 @@
     margin-bottom: 20px;
 }
 
+#top-screen{
+    height: 85px;
+    width: 300px;
+    margin: auto;
+    text-align: right;
+}
+
+#bottom-screen{
+    height: 65px;
+    width: 300px;
+    margin: auto;
+    text-align: right;
+    font-size: 40px;
+}
+
 #button-grid{
     display: grid;
     gap: 10px;
