@@ -27,7 +27,7 @@ let operate = (value1, value2, operator) => {
     }
 }
 
-let buttons = document.getElementsByClassName("button");
-for (let button in buttons){
-    buttons[button].addEventListener("click", e => {document.getElementById("screen").textContent = e.target.id});
+let buttons = document.getElementsByClassName("display-value");
+for (let i=0; i<buttons.length; i++){
+    buttons[i].addEventListener("click", e => {document.getElementById("bottom-screen").textContent += e.target.id});
 }
