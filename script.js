@@ -26,3 +26,8 @@ let operate = (value1, value2, operator) => {
             break;
     }
 }
+
+let buttons = document.getElementsByClassName("button");
+for (let button in buttons){
+    buttons[button].addEventListener("click", e => {document.getElementById("screen").textContent = e.target.id});
+}
