@@ -31,3 +31,6 @@ let buttons = document.getElementsByClassName("display-value");
 for (let i=0; i<buttons.length; i++){
     buttons[i].addEventListener("click", e => {document.getElementById("bottom-screen").textContent += e.target.id});
 }
+
+document.getElementById("clear").addEventListener("click", () => {document.getElementById("bottom-screen").textContent = ""});
+document.getElementById("delete").addEventListener("click", () => {document.getElementById("bottom-screen").textContent = document.getElementById("bottom-screen").textContent.slice(0, -1)});
