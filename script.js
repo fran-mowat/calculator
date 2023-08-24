@@ -1,29 +1,20 @@
-let add = (a, b) => {return a+b};
-let subtract = (a, b) => {return a-b};
-let multiply = (a, b) => {return a*b};
-let divide = (a, b) => {return a/b};
-
-let value1;
-let value2;
-let operator;
+let add = (a, b) => {return Number(a)+Number(b)};
+let subtract = (a, b) => {return Number(a)-Number(b)};
+let multiply = (a, b) => {return Number(a)*Number(b)};
+let divide = (a, b) => {return Number(a)/Number(b)};
 
 let operate = (value1, value2, operator) => {
     switch (operator){
         case "+":
-            add(value1, value2);
-            break;
-        case "-":
-            subtract(value1, value2);
-            break;
-        case "*":
-            multiply(value1, value2);
-            break;
-        case "/":
-            divide(value1, value2);
-            break;
+            return add(value1, value2);
+        case "−":
+            return subtract(value1, value2);
+        case "×":
+            return multiply(value1, value2);
+        case "÷":
+            return divide(value1, value2);
         default:
             console.log("error with operator function");
-            break;
     }
 }
 
@@ -38,10 +29,14 @@ for (let i=0; i<buttons.length; i++){
 let operators = document.getElementsByClassName("operator");
 let bottomScreen = document.getElementById("bottom-screen");
 let topScreen = document.getElementById("top-screen");
+let num1;
+let operator;
 
 for (let j=0; j<operators.length; j++){
     operators[j].addEventListener("click", function(e){
         if (bottomScreen.textContent != "" && topScreen.textContent === ""){
+            num1 = bottomScreen.textContent;
+            operator = e.target.id;
             topScreen.textContent = bottomScreen.textContent + e.target.id;
             bottomScreen.textContent = "";
         }
@@ -68,5 +63,13 @@ document.getElementById("negate").addEventListener("click", function(){
 document.getElementById("decimal").addEventListener("click", function(){
     if (!bottomScreen.textContent.includes(".") && bottomScreen.textContent != ""){
         bottomScreen.textContent += ".";
+    }
+})
+
+document.getElementById("equal").addEventListener("click", function(){
+    if (topScreen.textContent != "" && bottomScreen.textContent != ""){
+        let output = operate(num1, bottomScreen.textContent, operator)
+        topScreen.textContent += bottomScreen.textContent + "=" 
+        bottomScreen.textContent = output;
     }
 })
