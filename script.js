@@ -28,28 +28,31 @@ let operate = (value1, value2, operator) => {
 }
 
 let buttons = document.getElementsByClassName("display-value");
-for (let i=0; i<buttons.length; i++){
-    buttons[i].addEventListener("click", e => {document.getElementById("bottom-screen").textContent += e.target.id});
-}
 
-let operatorDisplay = (e) => {
-    let topScreen = document.getElementById("top-screen");
-    let bottomScreen = document.getElementById("bottom-screen");
-    topScreen.textContent = bottomScreen.textContent + e.target.id;
-    bottomScreen.textContent = "";
+for (let i=0; i<buttons.length; i++){
+    buttons[i].addEventListener("click", function(e){
+        document.getElementById("bottom-screen").textContent += e.target.id;
+    });
 }
 
 let operators = document.getElementsByClassName("operator");
+let bottomScreen = document.getElementById("bottom-screen");
+let topScreen = document.getElementById("top-screen");
+
 for (let j=0; j<operators.length; j++){
     operators[j].addEventListener("click", function(e){
-        let topScreen = document.getElementById("top-screen");
-        let bottomScreen = document.getElementById("bottom-screen");
-        topScreen.textContent = bottomScreen.textContent + e.target.id;
-        bottomScreen.textContent = "";
+        if (bottomScreen.textContent != "" && topScreen.textContent === ""){
+            topScreen.textContent = bottomScreen.textContent + e.target.id;
+            bottomScreen.textContent = "";
+        }
     });
 }
 
 document.getElementById("clear").addEventListener("click", function(){
-    document.getElementById("bottom-screen").textContent = ""
-    document.getElementById("top-screen").textContent = ""});
-document.getElementById("delete").addEventListener("click", () => {document.getElementById("bottom-screen").textContent = document.getElementById("bottom-screen").textContent.slice(0, -1)});
+    document.getElementById("bottom-screen").textContent = "";
+    document.getElementById("top-screen").textContent = "";
+});
+
+document.getElementById("delete").addEventListener("click", function(){
+        bottomScreen.textContent = bottomScreen.textContent.slice(0, bottomScreen.textContent.length-1);
+});
