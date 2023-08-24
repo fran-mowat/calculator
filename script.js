@@ -37,6 +37,9 @@ let operator;
 
 for (let j=0; j<operators.length; j++){
     operators[j].addEventListener("click", function(e){
+        if (bottomScreen.textContent.slice(-1) === "."){
+            bottomScreen.textContent = bottomScreen.textContent.slice(0, -1);
+        }
         if (bottomScreen.textContent != ""){
             num1 = bottomScreen.textContent;
             operator = e.target.id;
