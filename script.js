@@ -75,10 +75,13 @@ document.getElementById("decimal").addEventListener("click", function(){
 })
 
 document.getElementById("equal").addEventListener("click", function(){
+    if (bottomScreen.textContent.slice(-1) === "."){
+        bottomScreen.textContent = bottomScreen.textContent.slice(0, -1);
+    }
     if (topScreen.textContent != "" && bottomScreen.textContent != "" && !topScreen.textContent.includes("=")){
         let output = operate(num1, bottomScreen.textContent, operator)
         topScreen.textContent += " " + bottomScreen.textContent + " =" 
         bottomScreen.textContent = output;
         equalPress = true;
     }
-}) ///once equal is pressed, all buttons disable except for AC 
+})
