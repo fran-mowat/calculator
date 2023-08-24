@@ -61,5 +61,21 @@
 }
 
 .button:hover{
-    background-color: #a2a2a2;
+    background-color: #b4b3b3;
+}
+
+.operator{
+    background-color: tan;
+}
+
+.operator:hover{
+    background-color: rgb(192, 165, 128);
+}
+
+#clear, #delete, #negate, #equal{
+    background-color: #8a99b6;
+}
+
+#clear:hover, #delete:hover, #negate:hover, #equal:hover{
+    background-color: #808ea9;
 }
