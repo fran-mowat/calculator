@@ -64,3 +64,9 @@ document.getElementById("negate").addEventListener("click", function(){
         bottomScreen.textContent = Math.abs(bottomScreen.textContent);
     }
 })
+
+document.getElementById("decimal").addEventListener("click", function(){
+    if (!bottomScreen.textContent.includes(".") && bottomScreen.textContent != ""){
+        bottomScreen.textContent += ".";
+    }
+})
