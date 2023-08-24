@@ -18,11 +18,14 @@ let operate = (value1, value2, operator) => {
     }
 }
 
+let equalPress = false;
 let buttons = document.getElementsByClassName("display-value");
 
 for (let i=0; i<buttons.length; i++){
     buttons[i].addEventListener("click", function(e){
-        document.getElementById("bottom-screen").textContent += e.target.id;
+        if (!topScreen.textContent.includes("=")){
+            document.getElementById("bottom-screen").textContent += e.target.id;
+        }
     });
 }
 
@@ -34,10 +37,10 @@ let operator;
 
 for (let j=0; j<operators.length; j++){
     operators[j].addEventListener("click", function(e){
-        if (bottomScreen.textContent != "" && topScreen.textContent === ""){
+        if (bottomScreen.textContent != ""){
             num1 = bottomScreen.textContent;
             operator = e.target.id;
-            topScreen.textContent = bottomScreen.textContent + e.target.id;
+            topScreen.textContent = bottomScreen.textContent + " " + e.target.id;
             bottomScreen.textContent = "";
         }
     });
@@ -49,27 +52,30 @@ document.getElementById("clear").addEventListener("click", function(){
 });
 
 document.getElementById("delete").addEventListener("click", function(){
+    if (!topScreen.textContent.includes("=")){
         bottomScreen.textContent = bottomScreen.textContent.slice(0, bottomScreen.textContent.length-1);
+    }
 });
 
 document.getElementById("negate").addEventListener("click", function(){
-    if (bottomScreen.textContent > 0){
+    if (bottomScreen.textContent > 0 && !topScreen.textContent.includes("=")){
         bottomScreen.textContent = -Math.abs(bottomScreen.textContent);
-    } else if (bottomScreen.textContent < 0){
+    } else if (bottomScreen.textContent < 0 && !topScreen.textContent.includes("=")){
         bottomScreen.textContent = Math.abs(bottomScreen.textContent);
     }
 })
 
 document.getElementById("decimal").addEventListener("click", function(){
-    if (!bottomScreen.textContent.includes(".") && bottomScreen.textContent != ""){
+    if (!bottomScreen.textContent.includes(".") && bottomScreen.textContent != "" && !topScreen.textContent.includes("=")){
         bottomScreen.textContent += ".";
     }
 })
 
 document.getElementById("equal").addEventListener("click", function(){
-    if (topScreen.textContent != "" && bottomScreen.textContent != ""){
+    if (topScreen.textContent != "" && bottomScreen.textContent != "" && !topScreen.textContent.includes("=")){
         let output = operate(num1, bottomScreen.textContent, operator)
-        topScreen.textContent += bottomScreen.textContent + "=" 
+        topScreen.textContent += " " + bottomScreen.textContent + " =" 
         bottomScreen.textContent = output;
+        equalPress = true;
     }
-})
+}) ///once equal is pressed, all buttons disable except for AC 
