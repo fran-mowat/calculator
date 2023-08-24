@@ -1,7 +1,7 @@
-let add = (a, b) => {return Number(a)+Number(b)};
-let subtract = (a, b) => {return Number(a)-Number(b)};
-let multiply = (a, b) => {return Number(a)*Number(b)};
-let divide = (a, b) => {return Number(a)/Number(b)};
+let add = (a, b) => {return (Number(a)+Number(b)).toFixed(5)};
+let subtract = (a, b) => {return (Number(a)-Number(b)).toFixed(5)};
+let multiply = (a, b) => {return (Number(a)*Number(b)).toFixed(5)};
+let divide = (a, b) => {return (Number(a)/Number(b)).toFixed(5)};
 
 let operate = (value1, value2, operator) => {
     switch (operator){
