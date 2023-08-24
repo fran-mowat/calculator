@@ -5,7 +5,7 @@
 
 #calculator{
     background-color: #aaa;
-    height: 520px;
+    height: 480px;
     width: 350px;
     border-radius: 15px;
     padding: 20px;
@@ -16,14 +16,15 @@
 #screen{
     background-color: #e0e0e0;
     width: 350px;
-    height: 150px;
+    height: 110px;
     border-radius: 15px;
     margin: auto;
     margin-bottom: 20px;
 }
 
 #top-screen{
-    height: 85px;
+    padding-top: 15px;
+    height: 40px;
     width: 300px;
     margin: auto;
     text-align: right;
