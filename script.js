@@ -56,3 +56,11 @@ document.getElementById("clear").addEventListener("click", function(){
 document.getElementById("delete").addEventListener("click", function(){
         bottomScreen.textContent = bottomScreen.textContent.slice(0, bottomScreen.textContent.length-1);
 });
+
+document.getElementById("negate").addEventListener("click", function(){
+    if (bottomScreen.textContent > 0){
+        bottomScreen.textContent = -Math.abs(bottomScreen.textContent);
+    } else if (bottomScreen.textContent < 0){
+        bottomScreen.textContent = Math.abs(bottomScreen.textContent);
+    }
+})
