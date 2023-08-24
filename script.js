@@ -1,7 +1,7 @@
-let add = (a, b) => {return (Number(a)+Number(b)).toFixed(5)};
-let subtract = (a, b) => {return (Number(a)-Number(b)).toFixed(5)};
-let multiply = (a, b) => {return (Number(a)*Number(b)).toFixed(5)};
-let divide = (a, b) => {return (Number(a)/Number(b)).toFixed(5)};
+let add = (a, b) => {return Number(a)+Number(b)};
+let subtract = (a, b) => {return Number(a)-Number(b)};
+let multiply = (a, b) => {return Number(a)*Number(b)};
+let divide = (a, b) => {return Number(a)/Number(b)};
 
 let operate = (value1, value2, operator) => {
     switch (operator){
@@ -74,12 +74,23 @@ document.getElementById("decimal").addEventListener("click", function(){
     }
 })
 
+let countDecimals = (value) => {
+    if (Math.floor(value) === value){
+        return 0;
+    } else {
+        return String(value).split(".")[1].length;
+    }
+}
+
 document.getElementById("equal").addEventListener("click", function(){
     if (bottomScreen.textContent.slice(-1) === "."){
         bottomScreen.textContent = bottomScreen.textContent.slice(0, -1);
     }
     if (topScreen.textContent != "" && bottomScreen.textContent != "" && !topScreen.textContent.includes("=")){
         let output = operate(num1, bottomScreen.textContent, operator)
+        if (countDecimals(output) > 5){
+            output = output.toFixed(5);
+        }
         topScreen.textContent += " " + bottomScreen.textContent + " =" 
         bottomScreen.textContent = output;
         equalPress = true;
